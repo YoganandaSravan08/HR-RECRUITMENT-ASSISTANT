@@ -1,0 +1,16 @@
+const express = require("express");
+
+const router = express.Router();
+
+const {
+  generateQuestions,
+} = require(
+  "../controllers/interviewController"
+);
+
+router.post(
+  "/generate",
+  generateQuestions
+);
+
+module.exports = router;
