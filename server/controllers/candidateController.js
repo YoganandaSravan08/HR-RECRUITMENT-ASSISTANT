@@ -50,22 +50,32 @@ exports.getCandidates = async (req, res) => {
 };
 exports.getAnalytics = async (req, res) => {
   try {
-    const totalCandidates = await Candidate.countDocuments();
+    const totalCandidates =
+      await Candidate.countDocuments();
 
-    const candidates = await Candidate.find();
+    const candidates =
+      await Candidate.find();
 
     const averageATS =
       candidates.length > 0
-        ? candidates.reduce((sum, candidate) => sum + candidate.atsScore, 0) /
-          candidates.length
+        ? candidates.reduce(
+            (sum, candidate) =>
+              sum + candidate.atsScore,
+            0
+          ) / candidates.length
         : 0;
 
-    const topCandidate = candidates.sort((a, b) => b.atsScore - a.atsScore)[0];
+    const topCandidate =
+      candidates.sort(
+        (a, b) =>
+          b.atsScore - a.atsScore
+      )[0];
 
     res.json({
       totalCandidates,
       averageATS,
       topCandidate,
+      candidates, // IMPORTANT
     });
   } catch (error) {
     res.status(500).json({
