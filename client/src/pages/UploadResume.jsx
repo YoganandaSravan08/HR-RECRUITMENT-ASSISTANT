@@ -57,7 +57,7 @@ function UploadResume() {
           Upload Resume 📄
         </h1>
 
-        <p className="text-gray-300 mt-2">
+        <p className="text-gray-400 mt-2">
           Upload candidate resumes for ATS
           analysis and ranking.
         </p>
