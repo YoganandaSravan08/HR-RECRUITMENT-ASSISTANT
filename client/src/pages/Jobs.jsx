@@ -59,16 +59,16 @@ function Jobs() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold">Jobs Management 💼</h1>
 
-        <p className="text-gray-400 mt-2">
+        <p className="text-gray-300 mt-2">
           Create and manage job openings for candidates.
         </p>
       </div>
 
       <form
         onSubmit={createJob}
-        className="bg-white shadow-xl rounded-2xl p-8 border mb-8 hover:shadow-2xl transition duration-300"
+        className="bg-white rounded-3xl p-8 border border-gray-200 shadow-2xl mb-8 hover:-translate-y-1 hover:shadow-blue-500/20 transition-all duration-300"
       >
-        <h2 className="text-2xl font-bold mb-4">Create New Job</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Create New Job</h2>
 
         <input
           type="text"
@@ -120,9 +120,13 @@ function Jobs() {
             key={job._id}
             className="bg-white rounded-2xl p-6 shadow-lg border hover:shadow-2xl hover:-translate-y-1 transition duration-300"
           >
-            <h3 className="text-xl font-bold">{job.title}</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              {job.title}
+            </h3>
 
-            <p className="mt-2">{job.description}</p>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              {job.description}
+            </p>
 
             <div className="mt-3 flex flex-wrap gap-2">
               {job.requiredSkills.map((skill, index) => (
