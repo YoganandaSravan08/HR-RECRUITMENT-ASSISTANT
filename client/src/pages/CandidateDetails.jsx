@@ -24,9 +24,7 @@ function CandidateDetails() {
   if (!candidate) {
     return (
       <Layout>
-        <div className="text-center text-xl">
-          Loading Candidate...
-        </div>
+        <div className="text-center text-xl">Loading Candidate...</div>
       </Layout>
     );
   }
@@ -34,17 +32,14 @@ function CandidateDetails() {
   return (
     <Layout>
       <div className="mb-8">
-        <h1 className="text-5xl font-bold text-white">
-          Candidate Profile 👤
-        </h1>
+        <h1 className="text-5xl font-bold text-gray-900">Candidate Profile 👤</h1>
 
-        <p className="text-gray-400 mt-2">
+        <p className="text-lg text-gray-600 mt-2">
           Detailed candidate ATS analysis and resume review.
         </p>
       </div>
 
       <div className="bg-white rounded-3xl shadow-2xl p-8">
-
         {/* Header */}
         <div className="flex items-center gap-6 mb-8">
           <div className="w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg">
@@ -56,20 +51,18 @@ function CandidateDetails() {
               {candidate.name}
             </h2>
 
-            <p className="text-gray-600 mt-1">
-              📧 {candidate.email}
-            </p>
+            <p className="text-gray-600 mt-1">📧 {candidate.email}</p>
           </div>
         </div>
 
         {/* ATS Score */}
         <div
-          className={`rounded-2xl p-6 mb-8 border ${
+          className={`rounded-2xl p-5 mb-6 border ${
             candidate.atsScore >= 90
               ? "bg-green-100 border-green-300"
               : candidate.atsScore >= 70
-              ? "bg-yellow-100 border-yellow-300"
-              : "bg-red-100 border-red-300"
+                ? "bg-yellow-100 border-yellow-300"
+                : "bg-red-100 border-red-300"
           }`}
         >
           <h3
@@ -77,25 +70,36 @@ function CandidateDetails() {
               candidate.atsScore >= 90
                 ? "text-green-700"
                 : candidate.atsScore >= 70
-                ? "text-yellow-700"
-                : "text-red-700"
+                  ? "text-yellow-700"
+                  : "text-red-700"
             }`}
           >
             ATS Score: {candidate.atsScore}
           </h3>
 
           <p className="mt-3 text-lg text-gray-700">
+            <div className="mt-4 w-full bg-gray-200 rounded-full h-4">
+              <div
+                className={`h-4 rounded-full ${
+                  candidate.atsScore >= 90
+                    ? "bg-green-500"
+                    : candidate.atsScore >= 70
+                      ? "bg-yellow-500"
+                      : "bg-red-500"
+                }`}
+                style={{ width: `${candidate.atsScore}%` }}
+              ></div>
+            </div>
             {candidate.atsScore >= 90
               ? "Excellent Match 🎉"
               : candidate.atsScore >= 70
-              ? "Good Match 👍"
-              : "Needs Improvement ⚠️"}
+                ? "Good Match 👍"
+                : "Needs Improvement ⚠️"}
           </p>
         </div>
 
         {/* Skills Section */}
         <div className="grid md:grid-cols-2 gap-8 mb-8">
-
           {/* Matched Skills */}
           <div>
             <h3 className="text-2xl font-bold text-green-700 mb-4">
@@ -131,7 +135,6 @@ function CandidateDetails() {
               ))}
             </div>
           </div>
-
         </div>
 
         {/* Recommendation */}
@@ -157,7 +160,6 @@ function CandidateDetails() {
             </pre>
           </div>
         </div>
-
       </div>
     </Layout>
   );
