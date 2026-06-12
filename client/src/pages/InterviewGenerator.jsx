@@ -75,7 +75,7 @@ function InterviewGenerator() {
                 {questions.technicalQuestions?.map((q, index) => (
                   <li
                     key={index}
-                    className="bg-white p-4 mb-3 rounded-xl shadow-lg border hover:shadow-xl transition duration-300"
+                    className="bg-white text-gray-900 p-4 mb-3 rounded-xl shadow-lg border hover:shadow-xl transition duration-300"
                   >
                     <span className="font-bold text-blue-600">
                       Q{index + 1}.
@@ -95,7 +95,7 @@ function InterviewGenerator() {
                 {questions.hrQuestions?.map((q, index) => (
                   <li
                     key={index}
-                    className="bg-white p-4 mb-3 rounded-xl shadow-lg border hover:shadow-xl transition duration-300"
+                    className="bg-white text-gray-900 p-4 mb-3 rounded-xl shadow-lg border hover:shadow-xl transition duration-300"
                   >
                     <span className="font-bold text-blue-600">
                       Q{index + 1}.
@@ -115,7 +115,7 @@ function InterviewGenerator() {
                 {questions.scenarioQuestions?.map((q, index) => (
                   <li
                     key={index}
-                    className="bg-white p-4 mb-3 rounded-xl shadow-lg border hover:shadow-xl transition duration-300"
+                    className="bg-white text-gray-900 p-4 mb-3 rounded-xl shadow-lg border hover:shadow-xl transition duration-300"
                   >
                     <span className="font-bold text-blue-600">
                       Q{index + 1}.
