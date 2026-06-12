@@ -54,7 +54,7 @@ function Candidates() {
             placeholder="🔍 Search Candidate..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full md:w-96 border p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full md:w-96 bg-white text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-xl px-4 py-3 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
