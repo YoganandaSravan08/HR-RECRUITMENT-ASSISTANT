@@ -95,7 +95,7 @@ function ATSAnalysis() {
               }`}
             >
               <h2
-                className={`text-4xl font-bold ${
+                className={`text-5xl font-extrabold ${
                   result.atsScore >= 90
                     ? "text-green-700"
                     : result.atsScore >= 70
@@ -105,6 +105,26 @@ function ATSAnalysis() {
               >
                 ATS Score: {result.atsScore}
               </h2>
+
+              {/* Progress Bar */}
+              <div className="w-full bg-white/50 rounded-full h-5 mt-5 overflow-hidden">
+                <div
+                  className={`h-5 rounded-full transition-all duration-1000 ${
+                    result.atsScore >= 90
+                      ? "bg-green-500"
+                      : result.atsScore >= 70
+                        ? "bg-yellow-500"
+                        : "bg-red-500"
+                  }`}
+                  style={{
+                    width: `${result.atsScore}%`,
+                  }}
+                ></div>
+              </div>
+
+              <p className="mt-3 font-semibold text-gray-700">
+                Match Percentage: {result.atsScore}%
+              </p>
             </div>
 
             <div className="mb-6">
