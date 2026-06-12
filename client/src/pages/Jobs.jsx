@@ -68,7 +68,9 @@ function Jobs() {
         onSubmit={createJob}
         className="bg-white rounded-3xl p-8 border border-gray-200 shadow-2xl mb-8 hover:-translate-y-1 hover:shadow-blue-500/20 transition-all duration-300"
       >
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Create New Job</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          Create New Job
+        </h2>
 
         <input
           type="text"
@@ -101,7 +103,7 @@ function Jobs() {
           placeholder="Openings"
           value={openings}
           onChange={(e) => setOpenings(e.target.value)}
-          className="border border-gray-300 rounded-lg p-3 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 rounded-lg p-3 w-full mb-4 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         <button
