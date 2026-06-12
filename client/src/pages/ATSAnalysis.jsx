@@ -38,63 +38,42 @@ function ATSAnalysis() {
   return (
     <Layout>
       <div className="p-8">
-
-        <h1 className="text-4xl font-bold mb-2">
-          ATS Analysis 🎯
-        </h1>
+        <h1 className="text-4xl font-bold mb-2">ATS Analysis 🎯</h1>
 
         <p className="text-gray-500 mb-6">
           Analyze candidate resumes against job requirements.
         </p>
 
         <div className="mb-4">
-
           <select
             value={candidateId}
-            onChange={(e) =>
-              setCandidateId(e.target.value)
-            }
+            onChange={(e) => setCandidateId(e.target.value)}
             className="border p-3 w-96 rounded-lg shadow-sm"
           >
-            <option value="">
-              Select Candidate
-            </option>
+            <option value="">Select Candidate</option>
 
             {candidates.map((candidate) => (
-              <option
-                key={candidate._id}
-                value={candidate._id}
-              >
+              <option key={candidate._id} value={candidate._id}>
                 {candidate.name}
               </option>
             ))}
           </select>
-
         </div>
 
         <div className="mb-4">
-
           <select
             value={jobId}
-            onChange={(e) =>
-              setJobId(e.target.value)
-            }
+            onChange={(e) => setJobId(e.target.value)}
             className="border p-3 w-96 rounded-lg shadow-sm"
           >
-            <option value="">
-              Select Job
-            </option>
+            <option value="">Select Job</option>
 
             {jobs.map((job) => (
-              <option
-                key={job._id}
-                value={job._id}
-              >
+              <option key={job._id} value={job._id}>
                 {job.title}
               </option>
             ))}
           </select>
-
         </div>
 
         <button
@@ -106,72 +85,63 @@ function ATSAnalysis() {
 
         {result && (
           <div className="mt-8 bg-white border rounded-xl shadow-lg p-6">
-
-            <div className="bg-green-100 border border-green-300 p-6 rounded-lg mb-6">
-
-              <h2 className="text-3xl font-bold text-green-700">
+            <div
+              className={`rounded-xl p-6 mb-6 border ${
+                result.atsScore >= 90
+                  ? "bg-green-100 border-green-300"
+                  : result.atsScore >= 70
+                    ? "bg-yellow-100 border-yellow-300"
+                    : "bg-red-100 border-red-300"
+              }`}
+            >
+              <h2
+                className={`text-4xl font-bold ${
+                  result.atsScore >= 90
+                    ? "text-green-700"
+                    : result.atsScore >= 70
+                      ? "text-yellow-700"
+                      : "text-red-700"
+                }`}
+              >
                 ATS Score: {result.atsScore}
               </h2>
-
             </div>
 
             <div className="mb-6">
-
-              <h3 className="text-xl font-bold mb-3">
-                Matched Skills
-              </h3>
+              <h3 className="text-xl font-bold mb-3">Matched Skills</h3>
 
               <ul className="space-y-2">
-                {result.matchedSkills.map(
-                  (skill, index) => (
-                    <li key={index}>
-                      ✅ {skill}
-                    </li>
-                  )
-                )}
+                {result.matchedSkills.map((skill, index) => (
+                  <li key={index}>✅ {skill}</li>
+                ))}
               </ul>
-
             </div>
 
             <div className="mb-6">
-
-              <h3 className="text-xl font-bold mb-3">
-                Missing Skills
-              </h3>
+              <h3 className="text-xl font-bold mb-3">Missing Skills</h3>
 
               {result.missingSkills.length > 0 ? (
                 <ul className="space-y-2">
-                  {result.missingSkills.map(
-                    (skill, index) => (
-                      <li key={index}>
-                        ❌ {skill}
-                      </li>
-                    )
-                  )}
+                  {result.missingSkills.map((skill, index) => (
+                    <li key={index}>❌ {skill}</li>
+                  ))}
                 </ul>
               ) : (
                 <p className="text-green-600 font-semibold">
                   No missing skills 🎉
                 </p>
               )}
-
             </div>
 
             <div>
-
-              <h3 className="text-xl font-bold mb-3">
-                Recommendation
-              </h3>
+              <h3 className="text-xl font-bold mb-3">Recommendation</h3>
 
               <p className="text-gray-700 leading-relaxed">
                 {result.recommendation}
               </p>
-
             </div>
-
           </div>
         )}
-
       </div>
     </Layout>
   );
