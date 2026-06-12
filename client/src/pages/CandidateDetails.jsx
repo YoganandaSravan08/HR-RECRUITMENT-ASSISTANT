@@ -15,7 +15,6 @@ function CandidateDetails() {
   const fetchCandidate = async () => {
     try {
       const res = await API.get(`/candidates/${id}`);
-
       setCandidate(res.data);
     } catch (error) {
       console.error(error);
@@ -25,85 +24,140 @@ function CandidateDetails() {
   if (!candidate) {
     return (
       <Layout>
-        <p>Loading...</p>
+        <div className="text-center text-xl">
+          Loading Candidate...
+        </div>
       </Layout>
     );
   }
 
   return (
     <Layout>
-      <h1 className="text-4xl font-bold mb-6">Candidate Profile 👤</h1>
+      <div className="mb-8">
+        <h1 className="text-5xl font-bold text-white">
+          Candidate Profile 👤
+        </h1>
 
-      <div className="bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-2xl font-bold mb-4">{candidate.name}</h2>
-
-        <p className="mb-2">
-          <strong>Email:</strong> {candidate.email}
+        <p className="text-gray-400 mt-2">
+          Detailed candidate ATS analysis and resume review.
         </p>
+      </div>
 
+      <div className="bg-white rounded-3xl shadow-2xl p-8">
+
+        {/* Header */}
+        <div className="flex items-center gap-6 mb-8">
+          <div className="w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg">
+            {candidate.name?.charAt(0)}
+          </div>
+
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900">
+              {candidate.name}
+            </h2>
+
+            <p className="text-gray-600 mt-1">
+              📧 {candidate.email}
+            </p>
+          </div>
+        </div>
+
+        {/* ATS Score */}
         <div
-          className={`rounded-lg p-4 mt-4 mb-4 border ${
+          className={`rounded-2xl p-6 mb-8 border ${
             candidate.atsScore >= 90
               ? "bg-green-100 border-green-300"
               : candidate.atsScore >= 70
-                ? "bg-yellow-100 border-yellow-300"
-                : "bg-red-100 border-red-300"
+              ? "bg-yellow-100 border-yellow-300"
+              : "bg-red-100 border-red-300"
           }`}
         >
           <h3
-            className={`text-2xl font-bold ${
+            className={`text-4xl font-bold ${
               candidate.atsScore >= 90
                 ? "text-green-700"
                 : candidate.atsScore >= 70
-                  ? "text-yellow-700"
-                  : "text-red-700"
+                ? "text-yellow-700"
+                : "text-red-700"
             }`}
           >
             ATS Score: {candidate.atsScore}
           </h3>
 
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-3 text-lg text-gray-700">
             {candidate.atsScore >= 90
               ? "Excellent Match 🎉"
               : candidate.atsScore >= 70
-                ? "Good Match 👍"
-                : "Needs Improvement ⚠️"}
+              ? "Good Match 👍"
+              : "Needs Improvement ⚠️"}
           </p>
         </div>
 
-        <h3 className="font-bold text-xl mb-2">Matched Skills</h3>
+        {/* Skills Section */}
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
 
-        {candidate.matchedSkills?.length > 0 ? (
-          <ul className="mb-4">
-            {candidate.matchedSkills.map((skill, index) => (
-              <li key={index}>✅ {skill}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No matched skills.</p>
-        )}
+          {/* Matched Skills */}
+          <div>
+            <h3 className="text-2xl font-bold text-green-700 mb-4">
+              ✅ Matched Skills
+            </h3>
 
-        <h3 className="font-bold text-xl mb-2">Missing Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {candidate.matchedSkills?.map((skill, index) => (
+                <span
+                  key={index}
+                  className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-medium"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
 
-        {candidate.missingSkills?.length > 0 ? (
-          <ul className="mb-4">
-            {candidate.missingSkills.map((skill, index) => (
-              <li key={index}>❌ {skill}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-green-600">No missing skills 🎉</p>
-        )}
+          {/* Missing Skills */}
+          <div>
+            <h3 className="text-2xl font-bold text-red-700 mb-4">
+              ❌ Missing Skills
+            </h3>
 
-        <h3 className="font-bold text-xl mb-2">Recommendation</h3>
+            <div className="flex flex-wrap gap-2">
+              {candidate.missingSkills?.map((skill, index) => (
+                <span
+                  key={index}
+                  className="bg-red-100 text-red-700 px-4 py-2 rounded-full font-medium"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
 
-        <p className="mb-6">{candidate.recommendation}</p>
-
-        <h3 className="font-bold text-xl mb-2">Resume Preview</h3>
-
-        <div className="bg-gray-100 p-4 rounded-lg max-h-80 overflow-y-auto">
-          <pre className="whitespace-pre-wrap">{candidate.resumeText}</pre>
         </div>
+
+        {/* Recommendation */}
+        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 mb-8">
+          <h3 className="text-2xl font-bold text-blue-700 mb-3">
+            🤖 AI Recommendation
+          </h3>
+
+          <p className="text-gray-700 leading-relaxed">
+            {candidate.recommendation}
+          </p>
+        </div>
+
+        {/* Resume */}
+        <div>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            📄 Resume Preview
+          </h3>
+
+          <div className="bg-gray-100 border rounded-xl p-5 max-h-96 overflow-y-auto">
+            <pre className="whitespace-pre-wrap text-gray-800">
+              {candidate.resumeText}
+            </pre>
+          </div>
+        </div>
+
       </div>
     </Layout>
   );
