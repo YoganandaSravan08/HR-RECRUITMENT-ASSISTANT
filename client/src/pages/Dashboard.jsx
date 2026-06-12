@@ -82,7 +82,7 @@ function Dashboard() {
           >
             <h2 className="text-gray-500">Top Candidate</h2>
 
-            <p className="text-lg font-bold break-words">
+            <p className="text-lg font-bold break-words text-black">
               {analytics.topCandidate?.name}
             </p>
 
