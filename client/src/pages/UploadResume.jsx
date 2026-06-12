@@ -53,7 +53,7 @@ function UploadResume() {
   return (
     <Layout>
       <div className="mb-8">
-        <h1 className="text-5xl font-bold text-white">
+        <h1 className="text-5xl font-bold text-gray">
           Upload Resume 📄
         </h1>
 
