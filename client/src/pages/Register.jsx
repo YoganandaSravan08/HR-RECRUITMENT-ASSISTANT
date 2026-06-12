@@ -1,6 +1,7 @@
 import { useState } from "react";
 import API from "../services/api";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -22,23 +23,20 @@ function Register() {
     try {
       await API.post("/auth/register", formData);
 
-      alert("Registration Successful");
+      toast.success("Registration Successful 🎉");
 
       window.location.href = "/";
     } catch (error) {
-      alert(error.response?.data?.message);
+      toast.error(error.response?.data?.message || "Registration Failed");
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-600 via-blue-600 to-purple-700 flex items-center justify-center p-6">
       <div className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-5xl w-full grid md:grid-cols-2">
-
         {/* Left Section */}
         <div className="hidden md:flex flex-col justify-center bg-gradient-to-br from-green-600 to-blue-700 text-white p-10">
-          <h1 className="text-5xl font-bold mb-4">
-            🚀 Join AIRecruit Pro
-          </h1>
+          <h1 className="text-5xl font-bold mb-4">🚀 Join AIRecruit Pro</h1>
 
           <p className="text-lg text-green-100 mb-8">
             Create your account and start managing recruitment smarter.
@@ -55,9 +53,7 @@ function Register() {
 
         {/* Right Section */}
         <div className="p-10">
-          <h2 className="text-4xl font-bold mb-2">
-            Create Account ✨
-          </h2>
+          <h2 className="text-4xl font-bold mb-2">Create Account ✨</h2>
 
           <p className="text-gray-500 mb-8">
             Start your AI-powered recruitment journey
@@ -95,10 +91,7 @@ function Register() {
 
           <p className="mt-6 text-center text-gray-600">
             Already have an account?{" "}
-            <Link
-              to="/"
-              className="text-blue-600 font-bold hover:underline"
-            >
+            <Link to="/" className="text-blue-600 font-bold hover:underline">
               Login
             </Link>
           </p>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import API from "../services/api";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -23,23 +24,20 @@ function Login() {
 
       localStorage.setItem("token", res.data.token);
 
-      alert("Login Successful");
+      toast.success("Login Successful 🎉");
 
       window.location.href = "/dashboard";
     } catch (error) {
-      alert(error.response?.data?.message);
+      toast.error(error.response?.data?.message || "Login Failed");
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 flex items-center justify-center p-6">
       <div className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-5xl w-full grid md:grid-cols-2">
-        
         {/* Left Section */}
         <div className="hidden md:flex flex-col justify-center bg-gradient-to-br from-blue-700 to-purple-700 text-white p-10">
-          <h1 className="text-5xl font-bold mb-4">
-            🤖 AIRecruit Pro
-          </h1>
+          <h1 className="text-5xl font-bold mb-4">🤖 AIRecruit Pro</h1>
 
           <p className="text-lg text-blue-100 mb-8">
             Smart AI-Powered Recruitment Platform
@@ -56,9 +54,7 @@ function Login() {
 
         {/* Right Section */}
         <div className="p-10">
-          <h2 className="text-4xl font-bold mb-2">
-            Welcome Back 👋
-          </h2>
+          <h2 className="text-4xl font-bold mb-2">Welcome Back 👋</h2>
 
           <p className="text-gray-500 mb-8">
             Login to continue using AIRecruit Pro
