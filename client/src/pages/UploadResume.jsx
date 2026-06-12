@@ -53,11 +53,11 @@ function UploadResume() {
   return (
     <Layout>
       <div className="mb-8">
-        <h1 className="text-5xl font-bold text-gray-900">
+        <h1 className="text-5xl font-bold text-white">
           Upload Resume 📄
         </h1>
 
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-300 mt-2">
           Upload candidate resumes for ATS
           analysis and ranking.
         </p>
