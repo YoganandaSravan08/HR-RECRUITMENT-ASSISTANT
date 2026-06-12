@@ -29,7 +29,7 @@ function InterviewGenerator() {
     <Layout>
       <div className="p-8">
         <div className="mb-8">
-          <h1 className="text-5xl font-bold text-white">
+          <h1 className="text-5xl font-bold text-gray">
             AI Interview Generator 🤖
           </h1>
 
