@@ -14,7 +14,7 @@ function Layout({ children }) {
     <div
       className={`flex min-h-screen ${
         darkMode
-          ? "bg-gray-900 text-white"
+          ? "bg-gradient-to-br from-slate-950 via-gray-900 to-blue-950 text-white"
           : "bg-gray-100 text-black"
       }`}
     >
@@ -23,13 +23,11 @@ function Layout({ children }) {
       <div className="flex-1 p-6">
         <div className="flex justify-end mb-4">
           <button
-            onClick={() =>
-              setDarkMode(!darkMode)
-            }
-            className={`px-4 py-2 rounded-lg font-medium transition ${
+            onClick={() => setDarkMode(!darkMode)}
+            className={`px-4 py-2 rounded-lg font-medium transition duration-300 shadow-md ${
               darkMode
-                ? "bg-yellow-500 text-black"
-                : "bg-gray-800 text-white"
+                ? "bg-gray-700 text-white hover:bg-gray-600"
+                : "bg-gray-800 text-white hover:bg-gray-700"
             }`}
           >
             {darkMode
