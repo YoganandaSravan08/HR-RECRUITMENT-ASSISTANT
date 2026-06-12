@@ -59,7 +59,7 @@ function Jobs() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold">Jobs Management 💼</h1>
 
-        <p className="text-gray-300 mt-2">
+        <p className="text-gray-400 mt-2">
           Create and manage job openings for candidates.
         </p>
       </div>
