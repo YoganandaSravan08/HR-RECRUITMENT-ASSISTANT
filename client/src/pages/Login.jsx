@@ -26,7 +26,9 @@ function Login() {
 
       toast.success("Login Successful 🎉");
 
-      window.location.href = "/dashboard";
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 1000);
     } catch (error) {
       toast.error(error.response?.data?.message || "Login Failed");
     }

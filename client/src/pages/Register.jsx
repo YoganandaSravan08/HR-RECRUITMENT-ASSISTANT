@@ -25,7 +25,9 @@ function Register() {
 
       toast.success("Registration Successful 🎉");
 
-      window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration Failed");
     }
